@@ -9,6 +9,8 @@ import Lenis from "@studio-freight/lenis";
 import type { AppProps } from "next/app";
 import { useEffect } from "react";
 import { GetLayoutQuery } from "../../lib/generated/sdk";
+import { useGSAP } from "@gsap/react";
+import gsap from "gsap";
 
 export default function App({
   Component,
@@ -16,6 +18,8 @@ export default function App({
 }: AppProps & {
   layout: GetLayoutQuery;
 }) {
+  gsap.registerPlugin(useGSAP);
+
   useEffect(() => {
     const lenis = new Lenis({
       duration: 1,
