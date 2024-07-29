@@ -1,5 +1,5 @@
 import Button from "@/components/shared/Button/Button";
-import styles from "./ErrorPage.module.css";
+// import styles from "./ErrorPage.module.css";
 
 interface ErrorPageProps {
   statusCode?: number | null;

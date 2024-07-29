@@ -1,5 +1,5 @@
 // Big thanks to Studio Freight! github.com/studio-freight/
-import styles from "./PageTransition.module.css";
+// import styles from "./PageTransition.module.css";
 import { useAnimationControls } from "framer-motion";
 import { useRouter } from "next/router";
 import { useEffect, useRef, useState } from "react";
@@ -56,7 +56,7 @@ export const PageTransition = () => {
 
   return (
     <motion.div
-      className={styles["page-transition"]}
+      // className={styles["page-transition"]}
       animate={controls}
       variants={variants}
       transition={{

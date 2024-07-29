@@ -1,5 +1,5 @@
 import { ReactNode } from "react";
-import styles from "./BaseLayout.module.css";
+// import styles from "./BaseLayout.module.css";
 import { Header } from "../Header/Header";
 import { Footer } from "../Footer/Footer";
 import { PageTransition } from "@/components/shared/PageTransition/PageTransition";
@@ -11,9 +11,9 @@ interface BaseLayoutProps {
 export function BaseLayout(props: BaseLayoutProps) {
   return (
     <>
-      <Header />
-      <main className={styles["main"]}>{props.children}</main>
-      <Footer />
+      {/* <Header /> */}
+      <main>{props.children}</main>
+      {/* <Footer /> */}
       <PageTransition />
     </>
   );
