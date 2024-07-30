@@ -12,6 +12,7 @@ export default function Page(props: PageProps) {
         pageTitle={"Basement Studio Code Challenge"}
         pageDescription={"This is the Basement Studio Code Challenge"}
         currentUrl={"/"}
+        image="/images/og.png"
       />
       <Hero />
       <Marquee />

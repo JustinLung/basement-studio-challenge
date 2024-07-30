@@ -66,7 +66,7 @@ export function Cart(props: CartProps) {
   return (
     <>
       <button
-        className="border-[1px] text-[0.875rem] md:text-[1.125rem] font-bold border-white px-[21px] py-[12px] md:px-[32px] md:py-[13px] rounded-full"
+        className="border-[1px] text-[0.875rem] md:text-[1.125rem] font-bold border-white px-[21px] py-[12px] md:px-[32px] md:py-[13px] rounded-full hover:bg-white hover:text-black transition-colors"
         onClick={openMenu}
       >
         Cart ({items.length})
