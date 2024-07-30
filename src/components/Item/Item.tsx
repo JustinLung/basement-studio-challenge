@@ -22,12 +22,12 @@ export function Item(props: ItemProps) {
         <div className="bg-custom-gradient w-full h-full flex items-center justify-center">
           <Image src={src} alt={alt} width={440} height={578} />
         </div>
-        <div className="flex justify-between border-t-[3px] border-t-white py-[8px] text-[1.3125rem]">
+        <div className="flex justify-between border-t-[3px] font-bold border-t-white py-[8px] text-[1.3125rem]">
           <h2>{title}</h2>
           <span>${price}</span>
         </div>
-        <div className="absolute text-black text-bold inset-0 flex flex-col items-center justify-center text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-          <p className="absolute text-[2rem] translate-x-[-50%] translate-y-[-50%] top-[50%] left-[50%]">
+        <div className="absolute inset-0 font-black flex flex-col items-center justify-center text-black text-stroke-white opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+          <p className="absolute text-[2rem] translate-x-[-50%] translate-y-[-50%] top-[50%] left-[50%] whitespace-nowrap">
             ADD TO CART
           </p>
           <Image

@@ -7,19 +7,19 @@ interface ShopProps {
 export const shopItems = [
   {
     title: "Black T-shirt",
-    alt: "Basement Studio T-Shirt",
+    alt: "Unisex Basic Softstyle T-Shirt",
     src: "/images/shirt.png",
     price: 7.95,
   },
   {
     title: "Black hoodie",
-    alt: "Basement Studio Hoodie",
+    alt: "Unisex Basic Softstyle Hoodie",
     src: "/images/hoodie.png",
     price: 13,
   },
   {
-    title: "Cap",
-    alt: "Basement Studio Cap",
+    title: "Black Cap",
+    alt: "Unisex Basic Softstyle Cap",
     src: "/images/cap.png",
     price: 13,
   },

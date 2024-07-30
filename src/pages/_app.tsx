@@ -1,10 +1,6 @@
 import { BaseLayout } from "@/components/features/layout/BaseLayout/BaseLayout";
 import "@/styles/app.css";
-// import "@/styles/fonts.css";
-// import "@/styles/media.css";
-// import "@/styles/normalize.css";
-// import "@/styles/typography.css";
-// import "@/styles/variables.css";
+import "@/styles/fonts.css";
 import Lenis from "@studio-freight/lenis";
 import type { AppProps } from "next/app";
 import { useEffect } from "react";

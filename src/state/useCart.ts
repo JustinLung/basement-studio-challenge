@@ -1,7 +1,8 @@
 import create from 'zustand';
 
-interface CartItem {
+export interface CartItemI {
   title: string;
+  description?: string;
   price: number;
   src: string;
   alt: string;
@@ -10,8 +11,8 @@ interface CartItem {
 
 interface CartState {
   getTotalPrice: any;
-  items: CartItem[];
-  addItem: (item: Omit<CartItem, 'quantity'>) => void;
+  items: CartItemI[];
+  addItem: (item: Omit<CartItemI, 'quantity'>) => void;
   increaseQuantity: (title: string) => void;
   decreaseQuantity: (title: string) => void;
   setQuantity: (title: string, quantity: number) => void;

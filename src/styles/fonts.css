@@ -1,0 +1,14 @@
+@font-face {
+  font-family: "BasementGrotesque-Regular";
+  src: url("/fonts/BasementGrotesque-Regular.otf");
+}
+
+@font-face {
+  font-family: "BasementGrotesque-Bold";
+  src: url("/fonts/BasementGrotesque-Bold.otf");
+}
+
+@font-face {
+  font-family: "BasementGrotesque-Black";
+  src: url("/fonts/BasementGrotesque-Black.otf");
+}

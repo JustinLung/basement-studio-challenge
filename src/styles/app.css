@@ -1,3 +1,19 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+body {
+  font-family: "BasementGrotesque-Regular";
+}
+
+.font-bold {
+  font-family: "BasementGrotesque-Bold";
+}
+
+.font-black {
+  font-family: "BasementGrotesque-Black";
+}
+
+.text-stroke-white {
+  -webkit-text-stroke: 1px white;
+}
