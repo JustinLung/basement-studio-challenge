@@ -3,6 +3,7 @@ import gsap from "gsap";
 import Image from "next/image";
 
 const Marquee = () => {
+  const asterik = useRef(null);
   const marqueeRef = useRef(null);
   const text = "A man can't have enough basement swag - ";
   const repeats = 30;
@@ -16,10 +17,21 @@ const Marquee = () => {
       {
         xPercent: -60,
         repeat: -1,
+        yoyo: true,
         duration: 180,
         ease: "linear",
       }
     );
+
+    gsap.to(asterik.current, {
+      y: "-=30",
+      x: "+=20",
+      rotation: "+=5",
+      repeat: -1,
+      ease: "linear",
+      yoyo: true,
+      duration: 10,
+    });
   }, []);
 
   return (
@@ -30,8 +42,9 @@ const Marquee = () => {
         width={160}
         height={168}
         className="absolute left-[90px] top-[-10px] z-20 hidden md:block"
+        ref={asterik}
       />
-      <div className=" relative flex items-center justify-center overflow-hidden whitespace-nowrap border-y-[1px] border-y-white mt-[22px] md:mt-[56px] mb-[48px] md:mb-[102px]">
+      <div className="relative flex items-center justify-center overflow-hidden whitespace-nowrap border-y-[1px] border-y-white mt-[22px] md:mt-[56px] mb-[48px] md:mb-[102px]">
         <div
           ref={marqueeRef}
           className="inline-block text-[1.25rem] md:text-[2.1875rem]"
@@ -49,6 +62,7 @@ const Marquee = () => {
         width={160}
         height={168}
         className="absolute right-[90px] top-[-125px] z-10 hidden md:block"
+        ref={asterik}
       />
     </div>
   );
