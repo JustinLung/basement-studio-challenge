@@ -6,42 +6,12 @@ import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { easeOutExpo } from "@/utils/transitions";
 import { useGSAP } from "@gsap/react";
-
+import { Cart } from "@/components/Cart/Cart";
 export function Header() {
-  const { isMenuOpen, openMenu, closeMenu } = useMenu();
+  const isMenuOpen = useMenu((state) => state.isMenuOpen);
   const ref = useRef(null);
-  const cartRef = useRef<HTMLDivElement>(null);
+
   const tl = useRef<gsap.core.Timeline | null>(null);
-
-  useGSAP(
-    () => {
-      tl.current = gsap.timeline({ paused: true });
-
-      tl.current.to(cartRef.current, {
-        opacity: 1,
-        x: "0%",
-      });
-    },
-    {
-      dependencies: [cartRef],
-    }
-  );
-
-  // useGSAP(() => {
-  //   tl.current = gsap.timeline({ paused: true }).to(cartRef.current, {
-  //     opacity: 1,
-  //     x: "0%",
-  //   });
-  // }, {});
-
-  useEffect(()=> {
-    if(isMenuOpen) {
-      tl.current?.play()
-    } else {
-      tl.current?.reverse()
-    }
-  })
-
 
   return (
     <header
@@ -78,29 +48,7 @@ export function Header() {
         height={24}
         className="hidden md:block"
       />
-      <button
-        className="border-[1px] text-[0.875rem] md:text-[1.125rem] text-[bold] border-white px-[21px] py-[12px] md:px-[32px] md:py-[13px] rounded-full"
-        onClick={openMenu}
-      >
-        Cart (0)
-      </button>
-      <menu
-        className="absolute bg-black z-10 right-0 top-0 w-full h-svh md:w-auto px-[32px]"
-        ref={cartRef}
-        style={{ display: isMenuOpen ? "block" : "none" }}
-      >
-        <div className="relative">
-          <button
-            className="ml-auto flex mt-[42px]"
-            onClick={() => {
-              closeMenu();
-            }}
-          >
-            → Close
-          </button>
-          <p className="text-[7rem] uppercase h-auto">Your Cart</p>
-        </div>
-      </menu>
+      <Cart />
     </header>
   );
 }
