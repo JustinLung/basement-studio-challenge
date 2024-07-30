@@ -27,36 +27,46 @@ export function CartItem(props: CartItemProps) {
 
   return (
     <li className="relative flex border-white border-[1px] p-[14px]">
-      <div className="bg-custom-gradient w-[234px] h-[231px] flex items-center justify-center">
+      <div className="bg-custom-gradient w-[98px] h-[98px] md:w-[234px] md:h-[231px] flex items-center justify-center">
         <Image src={src} alt={alt} width={210} height={231} />
       </div>
       <div className="ml-[20px] flex flex-col">
-        <span className="text-[2.2rem] uppercase font-bold">{item.title}</span>
-        <span className="text-[#999999] text-[1.3rem] font-bold">{alt}</span>
+        <span className="text-[0.875rem] md:text-[2.2rem] uppercase font-bold">
+          {item.title}
+        </span>
+        <span className="text-[#999999] text-[0.6875rem] md:text-[1.3rem] font-bold">
+          {alt}
+        </span>
         <div className="text-[1.3rem] mt-auto uppercase font-bold">
-          <span>Quantity: </span>
-          <button
-            onClick={() => decreaseQuantity(item.title)}
-            className="bg-red-500 text-white px-2 py-1 rounded"
-          >
-            -
-          </button>
-          <input
-            type="number"
-            value={item.quantity}
-            onChange={(e) => handleQuantityChange(item.title, e)}
-            className="w-16 text-center border rounded text-black"
-          />
-          <button
-            onClick={() => increaseQuantity(item.title)}
-            className="bg-green-500 text-white px-2 py-1 rounded"
-          >
-            +
-          </button>
-          <div>
-            <span>Size: </span>
+          <div className="flex items-center gap-[14px]">
+            <span className="text-[0.6875rem] md:text-[1.3125rem]">
+              Quantity:{" "}
+            </span>
+            <div className="border-[1px] border-white rounded-full w-fit text-[0.6875rem] md:text-[1.3125rem]">
+              <button
+                onClick={() => decreaseQuantity(item.title)}
+                className="text-white px-2 py-1 rounded"
+              >
+                -
+              </button>
+              <input
+                type="number"
+                value={item.quantity}
+                onChange={(e) => handleQuantityChange(item.title, e)}
+                className="text-center text-white w-[1rem] md:w-[1.5rem] bg-transparent"
+              />
+              <button
+                onClick={() => increaseQuantity(item.title)}
+                className="text-white px-2 py-1 rounded"
+              >
+                +
+              </button>
+            </div>
           </div>
-          <span className="absolute bottom-[10px] right-[10px] font-bold">
+          <div>
+            <span className="text-[0.6875rem] md:text-[1.3125rem]">Size: </span>
+          </div>
+          <span className="md:absolute bottom-[10px] right-[10px] font-bold">
             ${item.price}
           </span>
         </div>

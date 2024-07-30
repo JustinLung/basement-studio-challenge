@@ -1,12 +1,11 @@
 import useMenu from "@/state/useMenu";
-import { ChangeEvent, useEffect, useRef } from "react";
-import Image from "next/image";
+import { useEffect, useRef } from "react";
 import { useCartStore } from "@/state/useCart";
 import gsap from "gsap";
 import { easeOutExpo } from "@/utils/transitions";
 import { CartItem } from "../CartItem/CartItem";
-import Lenis from "@studio-freight/lenis";
 import { useKeyPress } from "@/utils/useKeyPress";
+import cn from "clsx";
 
 interface CartProps {}
 
@@ -49,6 +48,7 @@ export function Cart(props: CartProps) {
         display: "block",
         ease: easeOutExpo,
       });
+      window.Lenis?.stop();
     } else {
       gsap.to(cartRef.current, {
         duration: 0.8,
@@ -59,35 +59,40 @@ export function Cart(props: CartProps) {
           gsap.set(cartRef.current, { display: "none" });
         },
       });
-      document.body.classList.remove("overflow-y-hidden");
+      window.Lenis?.start();
     }
   }, [isMenuOpen]);
 
   return (
     <>
       <button
-        className="border-[1px] text-[0.875rem] md:text-[1.125rem] text-[bold] border-white px-[21px] py-[12px] md:px-[32px] md:py-[13px] rounded-full font-bold"
+        className="border-[1px] text-[0.875rem] md:text-[1.125rem] font-bold border-white px-[21px] py-[12px] md:px-[32px] md:py-[13px] rounded-full"
         onClick={openMenu}
       >
         Cart ({items.length})
       </button>
       <menu
-        className="absolute bg-black z-80 right-0 top-0 w-full h-svh md:w-auto max-h-screen overflow-y-auto"
+        className={cn(
+          "absolute bg-black z-80 right-0 top-0 w-full h-svh md:h-auto md:max-w-[824px] overflow-hidden border-white border-l-[1px] overflow-y-scroll"
+        )}
         ref={cartRef}
         style={{ transform: "translateX(300px)", opacity: 0, display: "none" }}
       >
-        <div className="relative px-[32px]">
+        <div className="relative px-[16px] md:px-[32px]">
           <button
-            className="ml-auto flex mt-[42px] uppercase font-bold text-[1.5rem]"
+            className="ml-auto flex mt-[18px] md:mt-[42px] uppercase font-bold text-[1.5rem]"
             onClick={closeMenu}
           >
             → Close
           </button>
-          <p className="text-[7rem] uppercase h-auto font-black text-stroke-white">
+          <p className="text-[6.5rem] md:text-[7rem] uppercase font-black text-stroke-white">
             Your <span className="text-black">Cart</span>
           </p>
         </div>
-        <ul className="mx-[32px] grid gap-10 mb-10 overflow-y-auto">
+        <ul
+          className="relative mx-[16px] md:mx-[32px] grid gap-10 md:mb-10 overflow-y-auto md:h-80"
+          data-lenis-prevent
+        >
           {items.map((item, index) => (
             <CartItem
               item={item}
@@ -97,15 +102,15 @@ export function Cart(props: CartProps) {
             />
           ))}
         </ul>
-        <div className="mt-auto flex justify-between font-black uppercase border-white border-y-[1px] text-[2.2rem]">
-          <h3 className="py-[23px] px-[32px]">
-            Total: ${totalPrice.toFixed(2)}
+        <div className="px-[16px] mt-auto flex flex-col md:flex-row justify-between font-black uppercase border-white md:border-y-[1px] text-[2.2rem]">
+          <h3 className="text-[1.25rem] mt-10 md:mt-0 md:text-[2.1875rem] md:px-[32px] flex justify-between items-center md:gap-[12px]">
+            Total: <span>${totalPrice.toFixed(2)}</span>
           </h3>
           <a
             href="https://www.youtube.com/watch?v=dQw4w9WgXcQ"
             target="_blank"
             rel="noreferrer noopener"
-            className="border-l-[1px] border-l-white py-[23px] px-[32px] text-stroke-white text-black"
+            className="md:border-l-[1px] md:border-l-white md:py-[23px] md:px-[32px] border-t-white border-t-[1px] w-full md:w-[unset] text-center text-stroke-white text-black text-[3rem]"
           >
             Checkout
           </a>

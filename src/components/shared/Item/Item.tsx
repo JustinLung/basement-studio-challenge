@@ -17,7 +17,7 @@ export function Item(props: ItemProps) {
   };
 
   return (
-    <article className="relative w-full group">
+    <article className="relative w-full group pointer">
       <button className="w-full h-full" onClick={handleAddToCart}>
         <div className="bg-custom-gradient w-full h-full flex items-center justify-center">
           <Image src={src} alt={alt} width={440} height={578} />

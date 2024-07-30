@@ -4,17 +4,14 @@ import "@/styles/fonts.css";
 import Lenis from "@studio-freight/lenis";
 import type { AppProps } from "next/app";
 import { useEffect } from "react";
-import { GetLayoutQuery } from "../../lib/generated/sdk";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
+import useMenu from "@/state/useMenu";
+import { useMedia } from "react-use";
 
-export default function App({
-  Component,
-  pageProps,
-}: AppProps & {
-  layout: GetLayoutQuery;
-}) {
-  gsap.registerPlugin(useGSAP);
+function App({ Component, pageProps }: AppProps) {
+  const isMenuOpen = useMenu((state) => state.isMenuOpen);
+  const isDesktop = useMedia("(min-width: 1024px)");
 
   useEffect(() => {
     const lenis = new Lenis({
@@ -36,10 +33,18 @@ export default function App({
     rAF = requestAnimationFrame(raf);
 
     return () => {
-      rAF = requestAnimationFrame(raf);
+      cancelAnimationFrame(rAF);
       lenis?.destroy();
     };
   }, []);
+
+  useEffect(() => {
+    if (isDesktop && isMenuOpen) {
+      window.Lenis.stop();
+    } else {
+      window.Lenis.start();
+    }
+  }, [isMenuOpen, isDesktop]);
 
   return (
     <>
@@ -50,3 +55,5 @@ export default function App({
     </>
   );
 }
+
+export default App;
