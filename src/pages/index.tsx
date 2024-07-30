@@ -9,8 +9,8 @@ export default function Page(props: PageProps) {
   return (
     <>
       <MetaTags
-        pageTitle={"Homepage"}
-        pageDescription={"This is the homepage"}
+        pageTitle={"Basement Studio Code Challenge"}
+        pageDescription={"This is the Basement Studio Code Challenge"}
         currentUrl={"/"}
       />
       <Hero />

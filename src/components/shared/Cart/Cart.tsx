@@ -110,7 +110,7 @@ export function Cart(props: CartProps) {
             href="https://www.youtube.com/watch?v=dQw4w9WgXcQ"
             target="_blank"
             rel="noreferrer noopener"
-            className="md:border-l-[1px] md:border-l-white md:py-[23px] md:px-[32px] border-t-white border-t-[1px] w-full md:w-[unset] text-center text-stroke-white text-black text-[3rem]"
+            className="md:border-l-[1px] md:border-l-white md:py-[23px] md:px-[32px] md:border-t-white md:border-t-[1px] w-full md:w-[unset] text-center text-stroke-white text-black text-[3rem]"
           >
             Checkout
           </a>

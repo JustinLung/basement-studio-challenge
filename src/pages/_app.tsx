@@ -4,8 +4,6 @@ import "@/styles/fonts.css";
 import Lenis from "@studio-freight/lenis";
 import type { AppProps } from "next/app";
 import { useEffect } from "react";
-import { useGSAP } from "@gsap/react";
-import gsap from "gsap";
 import useMenu from "@/state/useMenu";
 import { useMedia } from "react-use";
 

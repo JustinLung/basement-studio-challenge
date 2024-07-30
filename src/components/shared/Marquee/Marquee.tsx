@@ -14,9 +14,9 @@ const Marquee = () => {
       element,
       { xPercent: 0 },
       {
-        xPercent: -100,
+        xPercent: -60,
         repeat: -1,
-        duration: 150,
+        duration: 180,
         ease: "linear",
       }
     );
