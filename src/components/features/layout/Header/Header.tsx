@@ -1,4 +1,4 @@
-import { Link } from "@/components/shared/Link/Link";
+import Link from "next/link";
 import useMenu from "@/state/useMenu";
 import Image from "next/image";
 import cn from "clsx";
@@ -6,7 +6,7 @@ import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { easeOutExpo } from "@/utils/transitions";
 import { useGSAP } from "@gsap/react";
-import { Cart } from "@/components/Cart/Cart";
+import { Cart } from "@/components/shared/Cart/Cart";
 export function Header() {
   const isMenuOpen = useMenu((state) => state.isMenuOpen);
   const ref = useRef(null);

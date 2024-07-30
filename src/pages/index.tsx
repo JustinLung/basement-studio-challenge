@@ -1,7 +1,7 @@
 import MetaTags from "@/components/features/MetaTags";
-import { Hero } from "@/components/Hero/Hero";
-import Marquee from "@/components/Marquee/Marquee";
-import { Shop, shopItems } from "@/components/Shop/Shop";
+import { Hero } from "@/components/shared/Hero/Hero";
+import Marquee from "@/components/shared/Marquee/Marquee";
+import { Shop, shopItems } from "@/components/shared/Shop/Shop";
 
 interface PageProps {}
 

@@ -5,28 +5,36 @@ import { useCartStore } from "@/state/useCart";
 import gsap from "gsap";
 import { easeOutExpo } from "@/utils/transitions";
 import { CartItem } from "../CartItem/CartItem";
+import Lenis from "@studio-freight/lenis";
+import { useKeyPress } from "@/utils/useKeyPress";
 
 interface CartProps {}
 
 export function Cart(props: CartProps) {
   const cartRef = useRef<HTMLDivElement>(null);
-  const { isMenuOpen, openMenu, closeMenu } = useMenu();
+  const isMenuOpen = useMenu((state) => state.isMenuOpen);
+  const openMenu = useMenu((state) => state.openMenu);
+  const closeMenu = useMenu((state) => state.closeMenu);
   const items = useCartStore((state) => state.items);
-  const increaseQuantity = useCartStore((state) => state.increaseQuantity);
-  const decreaseQuantity = useCartStore((state) => state.decreaseQuantity);
-  const setQuantity = useCartStore((state) => state.setQuantity);
   const totalPrice = useCartStore((state) => state.totalPrice);
   const getTotalPrice = useCartStore((state) => state.getTotalPrice);
 
-  const handleQuantityChange = (
-    title: string,
-    event: ChangeEvent<HTMLInputElement>
-  ) => {
-    const quantity = parseInt(event.target.value, 10);
-    if (!isNaN(quantity)) {
-      setQuantity(title, quantity);
+  const handleClickOutside = (event: MouseEvent) => {
+    if (cartRef.current && !cartRef.current.contains(event.target as Node)) {
+      closeMenu();
     }
   };
+
+  useEffect(() => {
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
+
+  useKeyPress("Escape", () => {
+    closeMenu();
+  });
 
   useEffect(() => {
     getTotalPrice();
@@ -51,6 +59,7 @@ export function Cart(props: CartProps) {
           gsap.set(cartRef.current, { display: "none" });
         },
       });
+      document.body.classList.remove("overflow-y-hidden");
     }
   }, [isMenuOpen]);
 
