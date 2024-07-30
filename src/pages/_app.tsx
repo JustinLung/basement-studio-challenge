@@ -15,8 +15,8 @@ function App({ Component, pageProps }: AppProps) {
     const lenis = new Lenis({
       duration: 1,
       easing: (t: number) => (t === 1 ? 1 : 1 - Math.pow(2, -10 * t)),
-      orientation: "vertical", // vertical, horizontal
-      gestureOrientation: "vertical", // vertical, horizontal, both
+      orientation: "vertical",
+      gestureOrientation: "vertical",
       smoothWheel: true,
       smoothTouch: false,
       infinite: false,
@@ -46,7 +46,6 @@ function App({ Component, pageProps }: AppProps) {
 
   return (
     <>
-      {/* <PageTransition /> */}
       <BaseLayout>
         <Component {...pageProps} />
       </BaseLayout>
